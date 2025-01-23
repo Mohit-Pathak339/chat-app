@@ -8,11 +8,9 @@ let muteAudio = false;
 let videoOff = false;
 let isInCall = false;
 
-// Simulating a list of all users in the system (can be fetched from the backend)
+// Simulate online users list
 let allUsers = ['User1', 'User2', 'User3', 'User4', 'User5'];
-
-// Simulating which users are online at the moment
-let activeUsers = ['User1', 'User3', 'User5']; // Example: these users are online
+let activeUsers = ['User1', 'User3']; // Example: These users are online
 
 function login() {
     const username = document.getElementById('username').value;
@@ -181,5 +179,6 @@ function updateOnlineUsersList() {
         userList.appendChild(userListItem);
     });
 }
+
 
 
