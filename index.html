@@ -3,74 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat & Video Call App</title>
+    <title> My Flash Chat App</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Login Page -->
-    <div id="login-page">
-        <h2>Login</h2>
-        <input type="text" id="username" placeholder="Enter your name" />
-        <button onclick="login()">Login</button>
+<!-- Login Page -->
+<div id="login-page">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Enter your name" />
+    <button onclick="login()">Login</button>
+</div>
+
+<!-- Main Chat Interface Page (after Login) -->
+<div id="main-page" style="display:none;">
+    <!-- Online Users List -->
+    <div id="online-users">
+        <h3>Online Users</h3>
+        <ul id="user-list">
+            <!-- Dynamic User List will be populated here -->
+        </ul>
     </div>
 
-    <!-- Main Page (After Login) -->
-    <div id="main-page" style="display:none;">
-        <!-- Online Users List (Sidebar) -->
-        <div class="online-people">
-            <h3>Online Users</h3>
-            <ul id="onlineUsersList"></ul>
+    <!-- Chat Interface -->
+    <div id="chat-interface" style="display:none;">
+        <div id="chat-header">
+            <h3>Chat with <span id="chat-user"></span></h3>
+            <button onclick="closeChat()">Close Chat</button>
+        </div>
+        <div id="chat-box"></div>
+        <textarea id="chat-input" placeholder="Type your message"></textarea>
+        <button onclick="sendMessage()">Send</button>
+
+        <!-- Emoji Button -->
+        <button onclick="toggleEmojiDialog()">😊</button>
+        <div id="emoji-dialog" style="display:none;">
+            <button onclick="addEmoji('😊')">😊</button>
+            <button onclick="addEmoji('😢')">😢</button> 
+            <button onclick="addEmoji('😭')">😭</button> 
+            <button onclick="addEmoji('😞')">😞</button> 
+            <button onclick="addEmoji('😔')">😔</button> 
+            <button onclick="addEmoji('💔')">💔</button> 
+            <button onclick="addEmoji('❤️')">❤️</button>
+            <button onclick="addEmoji('💕')">💕</button>
+            <button onclick="addEmoji('💖')">💖</button>
+            <button onclick="addEmoji('💓')">💓</button> 
+            <button onclick="addEmoji('🥺')">🥺</button> 
+            <button onclick="addEmoji('😍')">😍</button> 
+            <button onclick="addEmoji('😘')">😘</button> 
         </div>
 
-        <!-- Chat Interface (Hidden until a user is clicked) -->
-        <div id="chat-interface" style="display:none;">
-            <div id="chat-header">
-                <h3>Chat with <span id="chat-user"></span></h3>
-                <button onclick="closeChat()">Close Chat</button>
-            </div>
-            <div id="chat-box"></div>
-            <textarea id="chat-input" placeholder="Type your message"></textarea>
-            <button onclick="sendMessage()">Send</button>
+        <!-- Voice Recording -->
+        <div id="voice-recording">
+            <button onclick="startRecording()">Start Recording</button>
+            <button onclick="stopRecording()">Stop Recording</button>
+            <button onclick="sendVoiceRecording()">Send Voice</button>
+            <audio id="audio-player" controls></audio>
+        </div>
 
-            <!-- Emoji Button -->
-            <button onclick="toggleEmojiDialog()">😊</button>
-            <div id="emoji-dialog" style="display:none;">
-                <button onclick="addEmoji('😊')">😊</button>
-                <button onclick="addEmoji('😂')">😂</button>
-                <button onclick="addEmoji('❤️')">❤️</button>
-                <button onclick="addEmoji('😢')">😢</button>
-                <button onclick="addEmoji('😎')">😎</button>
+        <!-- Video Call -->
+        <button onclick="toggleVideoCall()">Start Video Call</button>
+        <div id="video-call" style="display:none;">
+            <div id="video-cam">
+                <video id="local-video" autoplay></video>
+                <video id="remote-video" autoplay></video>
             </div>
-
-            <!-- Voice Recording -->
-            <div id="voice-recording">
-                <button onclick="startRecording()">Start Recording</button>
-                <button onclick="stopRecording()">Stop Recording</button>
-                <button onclick="sendVoiceRecording()">Send Voice</button>
-                <audio id="audio-player" controls></audio>
-            </div>
-
-            <!-- Video Call -->
-            <button onclick="toggleVideoCall()">Start Video Call</button>
-            <div id="video-call" style="display:none;">
-                <div id="video-cam">
-                    <video id="local-video" autoplay></video>
-                    <video id="remote-video" autoplay></video>
-                </div>
-                <div id="video-call-dialog">
-                    <button onclick="toggleMute()" id="mute-btn">Mute</button>
-                    <button onclick="toggleVideo()" id="video-btn">Turn Video Off</button>
-                    <button onclick="endVideoCall()">End Call</button>
-                </div>
+            <div id="video-call-dialog">
+                <button onclick="toggleMute()" id="mute-btn">Mute</button>
+                <button onclick="toggleVideo()" id="video-btn">Turn Video Off</button>
+                <button onclick="endVideoCall()">End Call</button>
             </div>
         </div>
     </div>
+</div>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
-
 
 
 
