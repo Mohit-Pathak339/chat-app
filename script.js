@@ -8,40 +8,21 @@ let muteAudio = false;
 let videoOff = false;
 let isInCall = false;
 
-// Simulating the list of online users after login
-let onlineUsers = [];  // This will store the online users
+// Simulating an array of users and their online status
+let onlineUsers = ['User1', 'User2', 'User3', 'User4', 'User5'];
 
-// Handle login functionality
+// Simulating which users are online at the moment
+let activeUsers = ['User1', 'User3', 'User5']; // Example: these users are online
+
 function login() {
     const username = document.getElementById('username').value;
     if (username) {
-        // Add the logged-in user to the online users list
-        onlineUsers.push(username);
-
-        // Hide the login page and show the main chat interface
         document.getElementById('login-page').style.display = 'none';
         document.getElementById('main-page').style.display = 'flex';
-
-        // Update the online user list
         updateOnlineUsersList();
     }
 }
 
-// Function to update the online users list
-function updateOnlineUsersList() {
-    const userListElement = document.getElementById('user-list');
-    userListElement.innerHTML = ''; // Clear the existing list
-
-    // Add each online user to the list
-    onlineUsers.forEach(user => {
-        const userElement = document.createElement('li');
-        userElement.textContent = user;
-        userElement.onclick = () => openChat(user);
-        userListElement.appendChild(userElement);
-    });
-}
-
-// Open chat interface for selected user
 function openChat(user) {
     currentChatUser = user;
     document.getElementById('chat-user').innerText = user;
@@ -49,12 +30,10 @@ function openChat(user) {
     clearChatBox();
 }
 
-// Close chat interface
 function closeChat() {
     document.getElementById('chat-interface').style.display = 'none';
 }
 
-// Send a message in the chat
 function sendMessage() {
     const message = document.getElementById('chat-input').value;
     if (message) {
@@ -67,7 +46,6 @@ function sendMessage() {
     }
 }
 
-// Clear the chat box
 function clearChatBox() {
     document.getElementById('chat-box').innerHTML = '';
 }
@@ -176,5 +154,20 @@ function toggleVideo() {
     videoTracks.forEach(track => track.enabled = !track.enabled);
     videoOff = !videoOff;
     document.getElementById('video-btn').textContent = videoOff ? 'Turn Video On' : 'Turn Video Off';
+}
+
+// Function to update the online users list
+function updateOnlineUsersList() {
+    const userList = document.getElementById('user-list');
+    userList.innerHTML = ''; // Clear the list first
+
+    activeUsers.forEach(user => {
+        const userListItem = document.createElement('li');
+        userListItem.textContent = user;
+        userListItem.onclick = function() {
+            openChat(user);
+        };
+        userList.appendChild(userListItem);
+    });
 }
 
