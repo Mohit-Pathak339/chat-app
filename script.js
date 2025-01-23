@@ -9,8 +9,8 @@ let videoOff = false;
 let isInCall = false;
 
 // Simulate online users list
-let allUsers = ['User1', 'User2', 'User3', 'User4', 'User5'];
-let activeUsers = ['User1', 'User3']; // Example: These users are online
+let allUsers = ['', '', '', '', ''];
+let activeUsers = ['', '']; // Example: These users are online
 
 function login() {
     const username = document.getElementById('username').value;
