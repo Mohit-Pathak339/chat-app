@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> My Flash Chat App</title>
+    <title>Flash Chat App</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -21,7 +21,9 @@
     <div id="online-users">
         <h3>Online Users</h3>
         <ul id="user-list">
-            <!-- Dynamic User List will be populated here -->
+            <li onclick="openChat('User1')">User1</li>
+            <li onclick="openChat('User2')">User2</li>
+            <li onclick="openChat('User3')">User3</li>
         </ul>
     </div>
 
@@ -38,6 +40,8 @@
         <!-- Emoji Button -->
         <button onclick="toggleEmojiDialog()">😊</button>
         <div id="emoji-dialog" style="display:none;">
+            <button onclick="addEmoji('😊')">😊</button>
+            <button onclick="addEmoji('😂')">😂</button>
             <button onclick="addEmoji('😊')">😊</button>
             <button onclick="addEmoji('😢')">😢</button> 
             <button onclick="addEmoji('😭')">😭</button> 
@@ -81,7 +85,4 @@
 </body>
 </html>
 
-
-
-
-
+       
