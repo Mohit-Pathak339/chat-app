@@ -8,8 +8,8 @@ let muteAudio = false;
 let videoOff = false;
 let isInCall = false;
 
-// Simulating an array of users and their online status
-let onlineUsers = ['User1', 'User2', 'User3', 'User4', 'User5'];
+// Simulating a list of all users in the system (can be fetched from the backend)
+let allUsers = ['User1', 'User2', 'User3', 'User4', 'User5'];
 
 // Simulating which users are online at the moment
 let activeUsers = ['User1', 'User3', 'User5']; // Example: these users are online
@@ -156,18 +156,30 @@ function toggleVideo() {
     document.getElementById('video-btn').textContent = videoOff ? 'Turn Video On' : 'Turn Video Off';
 }
 
-// Function to update the online users list
+// Function to update the online users list dynamically
 function updateOnlineUsersList() {
     const userList = document.getElementById('user-list');
     userList.innerHTML = ''; // Clear the list first
 
-    activeUsers.forEach(user => {
+    // Loop through all users and display online users
+    allUsers.forEach(user => {
         const userListItem = document.createElement('li');
         userListItem.textContent = user;
+        
+        // Check if the user is online (you can modify this based on real-time data)
+        if (activeUsers.includes(user)) {
+            userListItem.style.color = 'green'; // Indicating this user is online
+        } else {
+            userListItem.style.color = 'gray'; // Indicating this user is offline
+        }
+        
+        // On click, open chat with the user
         userListItem.onclick = function() {
             openChat(user);
         };
+        
         userList.appendChild(userListItem);
     });
 }
+
 
